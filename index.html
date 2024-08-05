@@ -17,6 +17,7 @@
  
   <main>
     <aside class="city-search">
+        <!-- A form where users can search for a city -->
         <form>
             <div class="form-group">
               <label for="searchInput">Search for a city:</label>
@@ -24,9 +25,19 @@
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
           </form>
+
+          <!-- Search history will be appended here -->
+          <section class="search-history"></section>
     </aside>
 
-    <section class="forecast"></section>
+    <section class="weather-info">
+      <!-- City name, the date, temperature, humidity, and wind speed will be appended here -->
+      <section class="current-conditions">
+      </section>
+
+      <!-- A five-day forecast will be appended here -->
+      <section class="forecast"></section>
+    </section>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
