@@ -11,26 +11,26 @@
 </head>
 
 <body>
-  <header>
+  <header class="text-light bg-primary text-center">
     <h1>Weather Dashboard</h1>
   </header>
- 
-  <main>
-    <aside class="city-search">
-        <!-- A form where users can search for a city -->
-        <form>
-            <div class="form-group">
-              <label for="searchInput">Search for a city:</label>
-              <input type="text" class="form-control" id="searchInput">
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
 
-          <!-- Search history will be appended here -->
-          <section class="search-history"></section>
+  <main class="d-flex">
+    <aside class="city-search col-3">
+      <!-- A form where users can search for a city -->
+      <form class="search-form">
+        <div class="form-group">
+          <label for="searchInput" class="city-search-header mb-3">Search for a city:</label>
+          <input type="text" class="form-control mb-3" id="searchInput">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+      </form>
+
+      <!-- Search history will be appended here -->
+      <section class="search-history"></section>
     </aside>
 
-    <section class="weather-info">
+    <section class="weather-info col-9">
       <!-- City name, the date, temperature, humidity, and wind speed will be appended here -->
       <section class="current-conditions">
       </section>

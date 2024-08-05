@@ -1,0 +1,37 @@
+/* Universal styles */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main header styles */
+h1 {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Styles for the search form and search history panel */
+    .city-search {
+        margin: 15px;
+        height: 100vh;
+    }
+
+    .search-form {
+        border-bottom: 1px solid lightgray;
+    }
+
+    .city-search-header {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .search-history {
+        margin: 15px;
+    }
