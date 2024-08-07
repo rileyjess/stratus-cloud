@@ -1,9 +1,10 @@
 // Assign the API Key to a variable
 const APIKey = "df9c79446d45e8f51367cc15f887cb31";
 const fetchBtn = document.getElementById('submit-btn');
-searchHistoryEl = document.getElementById('search-history');
-currentConditionsEl = document.getElementById('current-conditions');
-forecastEl = document.getElementById('forecast');
+const searchHistoryContainer = document.getElementById('search-history');
+const currentConditionsContainer = document.getElementById('current-conditions');
+const forecastContainer = document.getElementById('forecast');
+let searchHistory = [];
 
 // Call data from the API
 
@@ -13,12 +14,46 @@ function currentConditions(city) {
     const requestUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`;
 
     fetch(requestUrl)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (currentConditionsData) {
-        console.log(currentConditionsData);
-    })
+        .then(function (response) {
+            return response.json();
+        })
+
+        .then(function (currentConditionsData) {
+            console.log(currentConditionsData);
+
+            for (let i = 0; i < currentConditionsData.length; i++) {
+                // Create elements for each of the data
+                const currentConditionsCard = document.createElement('div');
+                const cityNameAndDate = document.createElement('h2');
+                const currentTemperature = document.createElement('p');
+                const currentWindSpeed = document.createElement('p');
+                const currentHumidity = document.createElement('p');
+
+                // Find the current date
+                const date = new Date();
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+                let currentDate = `(${day}/${month}/${year})`;
+
+                // Set text content for each new element based on the data points
+                cityNameAndDate.textContent = currentConditionsData[i].name + " " + currentDate + " " + currentConditionsData[i].weather, icon;
+                currentTemperature.textContent = "Temp: " + currentConditionsData[i].main.temp;
+                currentWindSpeed.textContent = "Wind" + currentConditionsData[i].wind.speed;
+                currentHumidity.textContent = "Wind: " + currentConditionsData[i].main.humidity;
+
+                // Append the new elements to the current conditions card
+                currentConditionsCard.append(cityNameAndDate);
+                currentConditionsCard.append(currentTemperature);
+                currentConditionsCard.append(currentWindSpeed);
+                currentConditionsCard.append(currentHumidity);
+
+                // Append the card to the right container in the HTML
+                currentConditionsContainer.append(currentConditionsCard);
+            }
+        })
+
+
 }
 
 
