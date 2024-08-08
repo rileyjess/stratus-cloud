@@ -101,12 +101,26 @@ function futureForecast() {
 
 }
 
-// Submit event when search button is clicked
-fetchBtn.addEventListener('submit', currentConditions);
-fetchBtn.addEventListener('submit', futureForecast);
-
 // Store search history in local storage
+fetchBtn.addEventListener("click", function() {
+    preventDefault();
+
+    const searchedCity = document.getElementById('searchInput').value.trim();
+    currentConditions(searchedCity);
+    futureForecast(searchedCity);
+
+    if(!searchHistory.includes(searchedCity)) {
+        searchHistory.push(searchedCity);
+        const historyItem = document.createElement('li');
+        historyItem.textContent = searchedCity;
+        searchHistory.append(historyItem);
+    }
+
+    localStorage.setItem("city", JSON.stringify(searchHistory));
+    console.log(searchHistory);
+})
 
 // Display search results on the page
+
 
 // When a person clicks a search history listing, the data for that city displays again
