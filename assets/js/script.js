@@ -1,10 +1,11 @@
 // Assign the API Key to a variable
 const APIKey = "df9c79446d45e8f51367cc15f887cb31";
-const fetchBtn = document.getElementById('submit-btn');
+const cityInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('submit-btn');
 const searchHistoryContainer = document.getElementById('search-history');
 const currentConditionsContainer = document.getElementById('current-conditions');
 const forecastContainer = document.getElementById('forecast');
-let searchHistory = [];
+let searchHistory = JSON.parse(localStorage.getItem('city'));
 
 // Call data from the API
 
@@ -101,26 +102,37 @@ function futureForecast() {
 
 }
 
-// Store search history in local storage
-fetchBtn.addEventListener("click", function() {
-    preventDefault();
-
-    const searchedCity = document.getElementById('searchInput').value.trim();
-    currentConditions(searchedCity);
-    futureForecast(searchedCity);
-
-    if(!searchHistory.includes(searchedCity)) {
-        searchHistory.push(searchedCity);
-        const historyItem = document.createElement('li');
-        historyItem.textContent = searchedCity;
-        searchHistory.append(historyItem);
-    }
-
-    localStorage.setItem("city", JSON.stringify(searchHistory));
-    console.log(searchHistory);
-})
 
 // Display search results on the page
+function displaySearchResults() {
+    JSON.parse(localStorage.getItem('city'));
+}
 
-
-// When a person clicks a search history listing, the data for that city displays again
+$(document).ready(function () {
+    // Store search history in local storage
+    searchBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        
+        const searchedCity = cityInput.value.trim();
+        currentConditions(searchedCity);
+        futureForecast(searchedCity);
+        
+        if(!searchHistory.includes(searchedCity)) {
+            searchHistory.push(searchedCity);
+            const historyItem = document.createElement('li');
+            historyItem.setAttribute('class', 'history-item');
+            historyItem.textContent = searchedCity;
+            searchHistory.append(historyItem);
+        }
+        
+        localStorage.setItem("city", JSON.stringify(searchHistory));
+        console.log(searchHistory);
+    })
+    
+    // When a person clicks a search history listing, the data for that city displays again
+    $('.history-item').on('click', function() {
+        const listItem = $(this).text();
+        currentConditions(listItem);
+        futureForecast(listItem);
+    })
+})
