@@ -60,10 +60,10 @@ function getWeatherData() {
             let currentDate = `(${day}/${month}/${year})`;
 
             // Retrieving the weather icon
-            const weatherIcon = weatherData.weather.icon;
+            const weatherIcon = weatherData.weather[0].icon;
 
             cityName.textContent = weatherData.name + " " + currentDate + " ";
-            icon.setAttribute('src', 'https://openweathermap.org/img/wn/${weatherIcon}@2x.png');
+            icon.setAttribute('src', 'https://openweathermap.org/img/wn/'+weatherIcon+'@2x.png');
             currentTemp.textContent = "Temperature: " + weatherData.main.temp + " °F";
             currentWind.textContent = "Wind: " + weatherData.wind.speed + " MPH";
             currentHumidity.textContent = "Humidity: " + weatherData.main.humidity + "%";

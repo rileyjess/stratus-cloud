@@ -82,3 +82,7 @@ h1 {
         margin: 0;
         line-height: 0.5;
     }
+
+    #icon {
+        height: 30px;
+    }
