@@ -34,49 +34,51 @@ h1 {
 
     .search-history {
         margin: 15px;
+}
+
+
+/* Style for the weather data panels */
+    .weather-data {
+        margin: 20px;
     }
 
-.weather-data {
-    margin: 20px;
-}
+    #current-conditions, #forecast {
+        border-radius: 5px;
+        padding: 20px;
+        margin: 10px;
+        line-height: 0.5;
+    }
 
-#current-conditions, #forecast {
-    border-radius: 5px;
-    padding: 20px;
-    margin: 10px;
-    line-height: 0.5;
-}
+    .forecast-cards {
+        padding: 0px;
+    }
 
-.forecast-cards {
-    padding: 0px;
-}
+    .forecast-card {
+        background-color: #7b848c;
+        color: #fff;
+        padding: 16px;
+        border-radius: 5px;
+        width: (100%/5);
+    }
 
-.forecast-card {
-    background-color: #7b848c;
-    color: #fff;
-    padding: 16px;
-    border-radius: 5px;
-    width: (100%/5);
-}
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 8px;
+    }
 
-h2 {
-    font-size: 20px;
-    font-weight: bold;
-}
+    h3 {
+        font-size: 14px;
+        font-weight: bold;
+    }
 
-h3 {
-    font-size: 14px;
-    font-weight: bold;
-}
+    p {
+        font-size: 12px;
+        font-weight: bold;
+    }
 
-p {
-    font-size: 12px;
-    font-weight: bold;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    line-height: 0.5;
-}
-
+    ul {
+        list-style: none;
+        margin: 0;
+        line-height: 0.5;
+    }
