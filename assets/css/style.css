@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
 }
 
 /* Main header styles */
@@ -11,6 +12,19 @@ h1 {
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
+    border-bottom-width: medium;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+}
+
+header {
+    border-radius: 5px;
+    margin: 10px;
+}
+
+body {
+    background-color: #7DAFB6;
+    height: 100vh;
 }
 
 /* Styles for the search form and search history panel */
@@ -20,7 +34,7 @@ h1 {
     }
 
     .search-form {
-        border-bottom: 1px solid lightgray;
+        border-bottom: 1px solid white;
     }
 
     .city-search-header {
@@ -30,6 +44,9 @@ h1 {
 
     .btn {
         width: 100%;
+        background-color: #d76c34;
+        border-color:#d76c34;
+        color: white;
     }
 
     .btn:hover {
@@ -42,12 +59,12 @@ h1 {
 
     .history-item {
         list-style: none;
-        background-color: lightgray;
-        color: black;
+        background-color: rgb(0 0 0 / 25%);
+        color: white;
         border-radius: 5px;
         margin-top: 15px;
         width: 100%;
-        padding: 5px;
+        padding: 7px;
         font-size: 14px;
         text-align: center;
     }
@@ -67,10 +84,11 @@ h1 {
         padding: 20px;
         margin: 10px;
         line-height: 0.5;
+        background: linear-gradient(to right, #d76c34, #FECA32 60%, #fbdf89);
     }
 
     #icon {
-        height: 120px;
+        height: 170px;
         padding: 0px;
     }
 
@@ -85,7 +103,7 @@ h1 {
     }
 
     .forecast-card {
-        background-color: #7b848c;
+        background-color: rgb(0 0 0 / 40%);
         color: #fff;
         padding: 16px;
         border-radius: 5px;
@@ -96,17 +114,20 @@ h1 {
     h2 {
         font-size: 25px;
         font-weight: bold;
-        padding-bottom: 8px;
+        padding-bottom: 1.5rem;
+        padding-top: 1rem;
     }
 
     h3 {
         font-size: 20px;
         font-weight: bold;
+        padding-top: 1rem;
     }
 
     p {
         font-size: 14px;
-        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
     }
 
     ul {
