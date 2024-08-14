@@ -32,8 +32,28 @@ h1 {
         width: 100%;
     }
 
+    .btn:hover {
+        cursor: pointer;
+    }
+
     .search-history {
         margin: 15px;
+    }
+
+    .history-item {
+        list-style: none;
+        background-color: lightgray;
+        color: black;
+        border-radius: 5px;
+        margin-top: 15px;
+        width: 100%;
+        padding: 5px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .history-item:hover {
+        cursor: pointer;
 }
 
 
@@ -42,10 +62,21 @@ h1 {
         margin: 20px;
     }
 
-    #current-conditions, #forecast {
+    #current-conditions {
         border-radius: 5px;
         padding: 20px;
         margin: 10px;
+        line-height: 0.5;
+    }
+
+    #icon {
+        height: 120px;
+        padding: 0px;
+    }
+
+    #forecast {
+        border-radius: 5px;
+        padding: 10px;
         line-height: 0.5;
     }
 
@@ -58,22 +89,23 @@ h1 {
         color: #fff;
         padding: 16px;
         border-radius: 5px;
-        width: (100%/5);
+        width: 18%;
+        text-align: center;
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 25px;
         font-weight: bold;
         padding-bottom: 8px;
     }
 
     h3 {
-        font-size: 14px;
+        font-size: 20px;
         font-weight: bold;
     }
 
     p {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
     }
 
@@ -83,6 +115,7 @@ h1 {
         line-height: 0.5;
     }
 
-    #icon {
-        height: 30px;
+   img {
+        height: 80px;
+        padding-bottom: 10px;
     }

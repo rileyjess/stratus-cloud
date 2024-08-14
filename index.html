@@ -16,7 +16,7 @@
   </header>
 
   <main class="d-flex">
-    <aside class="city-search col-3">
+    <aside class="city-search col">
       <!-- A form where users can search for a city -->
       <form class="search-form">
         <div class="form-group">
@@ -30,58 +30,24 @@
       <section id="search-history"></section>
     </aside>
 
-    <section class="weather-data col-8 d-flex flex-column">
+    <section class="weather-data col-9 d-flex flex-column">
       <!-- City name, the date, temperature, humidity, and wind speed will be appended here -->
-      <section id="current-conditions" class="text-light bg-primary">
-        <section class="d-flex flex-row">
-          <h2 id="city-name"></h2>
+      <section id="current-conditions" class="text-light bg-primary d-flex flex-row justify-content-between">
+        <section class="d-flex flex-column">
+          <h2 id="city-name">Current Conditions:</h2>
+          <p id="current-temp"></p>
+          <p id="current-wind"></p>
+          <p id="current-humidity"></p>
+        </section>
+        <section>
           <img id="icon"></img>
         </section>
-        <p id="current-temp">Temperature: </p>
-        <p id="current-wind">Wind: </p>
-        <p id="current-humidity">Humidity: </p>
       </section>
       
       <!-- A five-day forecast will be appended here -->
       <section id="forecast">
         <h2 id="forecast-heading">5-Day Forecast:</h2>
-        <ul class="forecast-cards d-flex flex-row justify-content-between">
-          <li class="forecast-card">
-            <h3 id="forecast-date"></h3>
-            <img id="forecast-icon"></img>
-            <p id="forecast-temp">Temperature: </p>
-            <p id="forecast-wind">Wind: </p>
-            <p id="forecast-humidity">Humidity: </p>
-          </li>
-          <li class="forecast-card">
-            <h3 id="forecast-date"></h3>
-            <img id="forecast-icon"></img>
-            <p id="forecast-temp">Temperature: </p>
-            <p id="forecast-wind">Wind: </p>
-            <p id="forecast-humidity">Humidity: </p>
-          </li>
-          <li class="forecast-card">
-            <h3 id="forecast-date"></h3>
-            <img id="forecast-icon"></img>
-            <p id="forecast-temp">Temperature: </p>
-            <p id="forecast-wind">Wind: </p>
-            <p id="forecast-humidity">Humidity: </p>
-          </li>
-          <li class="forecast-card">
-            <h3 id="forecast-date"></h3>
-            <img id="forecast-icon"></img>
-            <p id="forecast-temp">Temperature: </p>
-            <p id="forecast-wind">Wind: </p>
-            <p id="forecast-humidity">Humidity: </p>
-          </li>
-          <li class="forecast-card">
-            <h3 id="forecast-date"></h3>
-            <img id="forecast-icon"></img>
-            <p id="forecast-temp">Temperature: </p>
-            <p id="forecast-wind">Wind: </p>
-            <p id="forecast-humidity">Humidity: </p>
-          </li>
-        </ul>
+        <ul id="forecast-card-section" class="forecast-cards d-flex flex-row justify-content-between"></ul>
       </section>
     </section>
   </main>
