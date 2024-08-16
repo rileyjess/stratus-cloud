@@ -96,57 +96,65 @@ function getWeatherData(cityName) {
             currentWind.textContent = "Wind: " + weatherData.wind.speed + " MPH";
             currentHumidity.textContent = "Humidity: " + weatherData.main.humidity + "%";
 
+            // Assign the lattitude and longitude to variables
+            const lat = weatherData.coord.lat;
+            const lon = weatherData.coord.lon;
+
+            // Retrieve 5-day forecast data from the API
+            const requestForecastUrl = `https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${lon}&units=imperial&appid=${APIKey}`;
+
+            fetch(requestForecastUrl)
+                .then(function (response) {
+                    return response.json();
+                })
+
+                .then(function (forecastData) {
+                    console.log(forecastData);
+
+                    document.getElementById('forecast-card-section').innerHTML = "";
+
+                    for (let i = 0; i < forecastData.list.length; i++) {
+
+                        // Filter for results that include noon, so that we are seeing a daily forecast
+                        if (forecastData.list[i].dt_txt.includes('12:00:00')) {
+                            console.log(forecastData.list[i].dt_txt);
+
+                            // Configure the date for each
+                            const splitDate = forecastData.list[i].dt_txt.split(' ');
+                            const rearrangeDate = splitDate[0].split('-');
+                            const forecastDateText = month + '/' + rearrangeDate[2] + '/' + year;
+
+                            // Create the elements where the information will be displayed
+                            const forecastCard = document.createElement('li');
+                            forecastCard.setAttribute('class', 'forecast-card');
+                            const forecastDate = document.createElement('h3');
+                            const forecastIcon = document.createElement('img');
+                            const forecastTemp = document.createElement('p');
+                            const forecastWind = document.createElement('p');
+                            const forecastHumidity = document.createElement('p');
+
+                            // Find the corresponding weather icon
+                            const retrievedIcon = forecastData.list[i].weather[0].icon;
+
+                            // Fill in the elements with the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+                            forecastDate.textContent = forecastDateText;
+                            forecastIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + retrievedIcon + '@2x.png');
+                            forecastTemp.textContent = "Temperature: " + forecastData.list[i].main.temp + " °F";
+                            forecastWind.textContent = "Wind: " + forecastData.list[i].wind.speed + " MPH";
+                            forecastHumidity.textContent = "Humidity: " + forecastData.list[i].main.humidity + "%";
+
+                            forecastCard.appendChild(forecastDate);
+                            forecastCard.appendChild(forecastIcon);
+                            forecastCard.appendChild(forecastTemp);
+                            forecastCard.appendChild(forecastWind);
+                            forecastCard.appendChild(forecastHumidity);
+                            forecastCard.appendChild(forecastHumidity);
+                            forecastCards.appendChild(forecastCard);
+                        }
+                    }
+                })
         })
 
-    // Retrieve forecast data from the API
-    const requestForecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&cnt=5&appid=${APIKey}`;
-
-    fetch(requestForecastUrl)
-        .then(function (response) {
-            return response.json();
-        })
-
-        .then(function (forecastData) {
-            console.log(forecastData);
-
-            document.getElementById('forecast-card-section').innerHTML = "";
-
-            for (let i = 0; i < forecastData.list.length; i++) {
-                // Create the elements where the information will be displayed
-                const forecastCard = document.createElement('li');
-                forecastCard.setAttribute('class', 'forecast-card');
-                const forecastDate = document.createElement('h3');
-                const forecastIcon = document.createElement('img');
-                const forecastTemp = document.createElement('p');
-                const forecastWind = document.createElement('p');
-                const forecastHumidity = document.createElement('p');
-
-                // Calculate the date for each
-                const date = new Date();
-                const day = date.getDate() + i + 1;
-                const month = date.getMonth() + 1;
-                const year = date.getFullYear();
-                let currentDate = `(${month}/${day}/${year})`;
-
-                // Find the corresponding weather icon
-                const retrievedIcon = forecastData.list[i].weather[0].icon;
-
-                // Fill in the elements with the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-                forecastDate.textContent = currentDate;
-                forecastIcon.setAttribute('src', 'https://openweathermap.org/img/wn/' + retrievedIcon + '@2x.png');
-                forecastTemp.textContent = "Temperature: " + forecastData.list[i].main.temp + " °F";
-                forecastWind.textContent = "Wind: " + forecastData.list[i].wind.speed + " MPH";
-                forecastHumidity.textContent = "Humidity: " + forecastData.list[i].main.humidity + "%";
-
-                forecastCard.appendChild(forecastDate);
-                forecastCard.appendChild(forecastIcon);
-                forecastCard.appendChild(forecastTemp);
-                forecastCard.appendChild(forecastWind);
-                forecastCard.appendChild(forecastHumidity);
-                forecastCard.appendChild(forecastHumidity);
-                forecastCards.appendChild(forecastCard);
-            }
-        })
     cityInput.value = "";
 }
 
