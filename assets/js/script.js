@@ -50,6 +50,7 @@ function displaySearchedCities() {
     searchHistoryContainer.append(searchedItem);
 }
 
+// A function to handle running the getWeatherData function when the search button is clicked
 function handleSearch(event) {
     event.preventDefault();
     const cityName = cityInput.value.trim();
@@ -150,10 +151,10 @@ function getWeatherData(cityName) {
 }
 
 // // When the page loads, the search history will display
-$(document).ready(getHistoryFromStorage);
+getHistoryFromStorage();
 
 // When the button is clicked, run the function to create a new entry in the search history list
 searchBtn.addEventListener("click", createSearchHistory);
 
-// When the search button is clicked, the weather data will appear on the page
+// When the search button is clicked, run the function to make the weather data appear on the page
 searchBtn.addEventListener("click", handleSearch);
